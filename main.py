@@ -66,4 +66,5 @@ def userlist():
     return json.dumps(userlist)
 
 
-app.run("0.0.0.0", port = config.port)
+if __name__ == "__main__":
+    app.run("0.0.0.0", port = config.port)
