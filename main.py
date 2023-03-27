@@ -54,9 +54,16 @@ def user():
     
 @app.route("/userlist", methods = ["GET"])
 def userlist():
+    """
+    Returns all registered usernames and their corresponding ids.
+    """
     userlist = {}
     for user in usercol.find():
-        userlist[user["_"]]
+        if user["_id"] == "placeholder":
+            continue
+        userlist[user["username"]] = user["_id"]
+
+    return json.dumps(userlist)
 
 
 app.run("0.0.0.0")
